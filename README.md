@@ -7,8 +7,8 @@ Built with real-world backend practices, BlogIt focuses on security, scalability
 👉 https://blogit-4bjj.onrender.com/
 
 🌟 What Makes BlogIt Special?
-🔐 Authentication & Security
 
+🔐 Authentication & Security
 ✅ Secure Sign Up / Sign In system
 ✅ JWT-based authentication
 ✅ Hashed passwords using bcrypt
@@ -16,73 +16,48 @@ Built with real-world backend practices, BlogIt focuses on security, scalability
 ✅ Proper form validation & error messages
 
 📝 Blogging Made Easy
-
 ✍️ Create and publish blogs effortlessly
 🖼️ Upload blog images using Cloudinary
 📚 View all blogs on a dynamic homepage
 🎨 Clean and readable UI using EJS templates
 
 💬 User Interaction
-
 💭 Comment on blogs and share opinions
 👤 Author & commenter identity mapping using Mongoose populate()
 🔗 Well-structured relationships between users, blogs, and comments
 
 ⚙️ Backend Power
-
 🚀 RESTful API with Express.js
 📄 Server-side rendering (SSR) using EJS
 🗄️ MongoDB schema design with Mongoose
 
 ☁️ Deployment & CI/CD
-
 🌐 Fully deployed Node.js application
 ⚡ Hosted on Render
 🔁 Auto-deploy enabled via GitHub CI/CD
 
 🛠️ Tech Stack
+
 🎨 Frontend
-
 EJS (Server-Side Rendering)
-
 HTML5 | CSS3 | JavaScript
 
 🔧 Backend
-
 Node.js
-
 Express.js
 
 🗄️ Database
-
 MongoDB
-
 Mongoose ODM
 
 🔐 Auth & Storage
-
 JWT (JSON Web Tokens)
-
 bcrypt
-
 Cloudinary (Image Storage)
 
 🚀 Deployment
-
 Render
-
 GitHub (Version Control & CI/CD)
-
-📂 Project Structure
-├── controllers
-├── models
-├── routes
-├── views
-├── public
-├── middlewares
-├── utils
-├── app.js
-└── package.json
 
 🛡️ Security Highlights
 
