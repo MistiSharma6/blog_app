@@ -1,40 +1,45 @@
 ✨ BlogIt — A Full-Stack Blogging Platform ✨
 
+
+![Deployment Status](https://img.shields.io/badge/Deployment-Live-brightgreen)
+
 BlogIt is a modern, secure, and interactive blogging platform where users can share ideas, spread knowledge, and connect with others through blogs and comments.
 Built with real-world backend practices, BlogIt focuses on security, scalability, and clean user experience.
 
 🔗 🚀 Live Website:
 👉 https://blogit-4bjj.onrender.com/
 
+Please allow upto 1 minute for the intial server spin-up on the first visit.
+
 🌟 What Makes BlogIt Special?
 
-🔐 Authentication & Security
-✅ Secure Sign Up / Sign In system
-✅ JWT-based authentication
-✅ Hashed passwords using bcrypt
-✅ Cookie-based sessions
-✅ Proper form validation & error messages
+🔐 Authentication & Security <br>
+✅ Secure Sign Up / Sign In system <br> 
+✅ JWT-based authentication <br>
+✅ Hashed passwords using bcrypt <br>
+✅ Cookie-based sessions <br>
+✅ Proper form validation & error messages <br>
 
 📝 Blogging Made Easy
-✍️ Create and publish blogs effortlessly
-🖼️ Upload blog images using Cloudinary
-📚 View all blogs on a dynamic homepage
-🎨 Clean and readable UI using EJS templates
+✍️ Create and publish blogs effortlessly <br>
+🖼️ Upload blog images using Cloudinary <br>
+📚 View all blogs on a dynamic homepage <br>
+🎨 Clean and readable UI using EJS templates <br>
 
 💬 User Interaction
-💭 Comment on blogs and share opinions
-👤 Author & commenter identity mapping using Mongoose populate()
-🔗 Well-structured relationships between users, blogs, and comments
+💭 Comment on blogs and share opinions <br>
+👤 Author & commenter identity mapping using Mongoose populate() <br>
+🔗 Well-structured relationships between users, blogs, and comments <br>
 
 ⚙️ Backend Power
-🚀 RESTful API with Express.js
-📄 Server-side rendering (SSR) using EJS
-🗄️ MongoDB schema design with Mongoose
+🚀 RESTful API with Express.js <br>
+📄 Server-side rendering (SSR) using EJS <br>
+🗄️ MongoDB schema design with Mongoose <br>
 
-☁️ Deployment & CI/CD
-🌐 Fully deployed Node.js application
-⚡ Hosted on Render
-🔁 Auto-deploy enabled via GitHub CI/CD
+☁️ Deployment & CI/CD <br>
+🌐 Fully deployed Node.js application <br>
+⚡ Hosted on Render <br>
+🔁 Auto-deploy enabled via GitHub CI/CD <br>
 
 🛠️ Tech Stack
 
