@@ -11,6 +11,7 @@ Built with real-world backend practices, BlogIt focuses on security, scalability
 
 🔧 Please allow upto 1 minute for the intial server spin-up on the first visit.
 
+
 🌟 What Makes BlogIt Special?
 
 🔐 Authentication & Security <br>
@@ -41,6 +42,7 @@ Built with real-world backend practices, BlogIt focuses on security, scalability
 ⚡ Hosted on Render <br>
 🔁 Auto-deploy enabled via GitHub CI/CD <br>
 
+
 🛠️ Tech Stack
 
 🎨 Frontend <br>
@@ -64,12 +66,14 @@ Cloudinary (Image Storage) <br>
 Render <br>
 GitHub (Version Control & CI/CD) <br>
 
+
 🛡️ Security Highlights <br>
 
 🔒 Passwords never stored in plain text <br>
 🔒 Secure JWT-based authentication <br>
 🔒 Cookie protection for sessions <br>
 🔒 Input validation to prevent malicious attacks <br>
+
 
 🌱 Future Enhancements <br>
 
@@ -79,6 +83,7 @@ GitHub (Version Control & CI/CD) <br>
 ✨ Search & filter system <br>
 ✨ Rich-text editor <br>
 ✨ Admin & moderator roles <br>
+
 
 🤝 Contributing <br>
 
