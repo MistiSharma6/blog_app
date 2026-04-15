@@ -1,7 +1,7 @@
+![Deployment Status](https://img.shields.io/badge/Deployment-Live-brightgreen)
+
 ✨ BlogIt — A Full-Stack Blogging Platform ✨
 
-
-![Deployment Status](https://img.shields.io/badge/Deployment-Live-brightgreen)
 
 BlogIt is a modern, secure, and interactive blogging platform where users can share ideas, spread knowledge, and connect with others through blogs and comments.
 Built with real-world backend practices, BlogIt focuses on security, scalability, and clean user experience.
@@ -9,7 +9,7 @@ Built with real-world backend practices, BlogIt focuses on security, scalability
 🔗 🚀 Live Website:
 👉 https://blogit-4bjj.onrender.com/
 
-Please allow upto 1 minute for the intial server spin-up on the first visit.
+🔧 Please allow upto 1 minute for the intial server spin-up on the first visit.
 
 🌟 What Makes BlogIt Special?
 
