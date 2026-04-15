@@ -66,26 +66,26 @@ GitHub (Version Control & CI/CD)
 
 🛡️ Security Highlights
 
-🔒 Passwords never stored in plain text
-🔒 Secure JWT-based authentication
-🔒 Cookie protection for sessions
-🔒 Input validation to prevent malicious attacks
+🔒 Passwords never stored in plain text <br>
+🔒 Secure JWT-based authentication <br>
+🔒 Cookie protection for sessions <br>
+🔒 Input validation to prevent malicious attacks <br>
 
 🌱 Future Enhancements
 
-✨ Like & bookmark blogs
-✨ User profiles with bio & avatar
-✨ Blog categories & tags
-✨ Search & filter system
-✨ Rich-text editor
-✨ Admin & moderator roles
+✨ Like & bookmark blogs <br>
+✨ User profiles with bio & avatar <br>
+✨ Blog categories & tags <br>
+✨ Search & filter system <br>
+✨ Rich-text editor <br>
+✨ Admin & moderator roles <br>
 
 🤝 Contributing
 
 Contributions are welcome!
-🍴 Fork the repo
-🐛 Report issues
-🔧 Submit pull requests
+🍴 Fork the repo <br>
+🐛 Report issues <br>
+🔧 Submit pull requests <br>
 
 📬 Get in Touch
 
