@@ -26,12 +26,12 @@ Built with real-world backend practices, BlogIt focuses on security, scalability
 📚 View all blogs on a dynamic homepage <br>
 🎨 Clean and readable UI using EJS templates <br>
 
-💬 User Interaction
+💬 User Interaction <br>
 💭 Comment on blogs and share opinions <br>
 👤 Author & commenter identity mapping using Mongoose populate() <br>
 🔗 Well-structured relationships between users, blogs, and comments <br>
 
-⚙️ Backend Power
+⚙️ Backend Power <br>
 🚀 RESTful API with Express.js <br>
 📄 Server-side rendering (SSR) using EJS <br>
 🗄️ MongoDB schema design with Mongoose <br>
@@ -43,35 +43,35 @@ Built with real-world backend practices, BlogIt focuses on security, scalability
 
 🛠️ Tech Stack
 
-🎨 Frontend
-EJS (Server-Side Rendering)
-HTML5 | CSS3 | JavaScript
+🎨 Frontend <br>
+EJS (Server-Side Rendering) <br>
+HTML5 | CSS3 | JavaScript <br>
 
-🔧 Backend
-Node.js
-Express.js
+🔧 Backend <br>
+Node.js <br>
+Express.js <br>
 
-🗄️ Database
-MongoDB
-Mongoose ODM
+🗄️ Database <br>
+MongoDB <br>
+Mongoose ODM <br>
 
-🔐 Auth & Storage
-JWT (JSON Web Tokens)
-bcrypt
-Cloudinary (Image Storage)
+🔐 Auth & Storage <br>
+JWT (JSON Web Tokens) <br>
+bcrypt <br>
+Cloudinary (Image Storage) <br>
 
-🚀 Deployment
-Render
-GitHub (Version Control & CI/CD)
+🚀 Deployment <br>
+Render <br>
+GitHub (Version Control & CI/CD) <br>
 
-🛡️ Security Highlights
+🛡️ Security Highlights <br>
 
 🔒 Passwords never stored in plain text <br>
 🔒 Secure JWT-based authentication <br>
 🔒 Cookie protection for sessions <br>
 🔒 Input validation to prevent malicious attacks <br>
 
-🌱 Future Enhancements
+🌱 Future Enhancements <br>
 
 ✨ Like & bookmark blogs <br>
 ✨ User profiles with bio & avatar <br>
@@ -80,14 +80,14 @@ GitHub (Version Control & CI/CD)
 ✨ Rich-text editor <br>
 ✨ Admin & moderator roles <br>
 
-🤝 Contributing
+🤝 Contributing <br>
 
-Contributions are welcome!
+Contributions are welcome! <br>
 🍴 Fork the repo <br>
 🐛 Report issues <br>
 🔧 Submit pull requests <br>
 
-📬 Get in Touch
+📬 Get in Touch <br>
 
-Have feedback or ideas?
+Have feedback or ideas? <br>
 Let’s connect and build together 🚀
