@@ -1,27 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include("./partials/head") %>
-    <title>Signin</title>
+  <%- include("./partials/head") %>
+  <title>Sign in — BlogIt</title>
+  <style>
+    .auth-page {
+      min-height: calc(100vh - 64px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 700px) {
+      .auth-page { grid-template-columns: 1fr; }
+      .auth-panel { display: none; }
+    }
+
+    /* Left editorial panel */
+    .auth-panel {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(2rem, 5vw, 4rem);
+      position: relative;
+      overflow: hidden;
+    }
+    .auth-panel::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(232,201,126,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(100,80,200,0.04) 0%, transparent 60%);
+    }
+    .panel-quote {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      position: relative; z-index: 1;
+      margin-bottom: 1.25rem;
+    }
+    .panel-quote em { font-style: italic; color: var(--accent); }
+    .panel-attr {
+      font-family: var(--mono);
+      font-size: 0.75rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--muted);
+      position: relative; z-index: 1;
+    }
+    .panel-deco {
+      position: absolute; top: 2rem; right: 2rem;
+      font-family: var(--serif);
+      font-size: 9rem; font-weight: 900;
+      line-height: 1;
+      color: rgba(232,201,126,0.05);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* Right form panel */
+    .auth-form-wrap {
+      display: flex; align-items: center; justify-content: center;
+      padding: clamp(2rem, 5vw, 4rem);
+    }
+    .auth-form-inner { width: 100%; max-width: 380px; }
+
+    .auth-logo {
+      font-family: var(--serif);
+      font-size: 1.7rem; font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .auth-logo span { color: var(--accent); }
+    .auth-greeting {
+      font-size: 0.9rem; color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .auth-form { display: flex; flex-direction: column; gap: 1.1rem; }
+
+    .auth-divider {
+      display: flex; align-items: center; gap: 0.75rem;
+      color: var(--muted); font-size: 0.78rem;
+      margin: 0.25rem 0;
+    }
+    .auth-divider::before, .auth-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+
+    .auth-submit {
+      width: 100%; padding: 0.8rem;
+      font-size: 0.92rem; font-weight: 600;
+      justify-content: center;
+      margin-top: 0.25rem;
+    }
+
+    .auth-footer {
+      text-align: center; margin-top: 1.75rem;
+      font-size: 0.85rem; color: var(--muted);
+    }
+    .auth-footer a { color: var(--accent); }
+    .auth-footer a:hover { text-decoration: underline; }
+  </style>
 </head>
 <body>
-    <%- include("./partials/nav") %>
+  <%- include("./partials/nav") %>
 
-    <div class="container">
-        <form action="/user/signin" method="post">
-            <div class="mb-3 mt-4">
-                <label for="email" class="form-label" name="email">Email address</label>
-                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label" name="password">Password</label>
-                <input type="password" class="form-control" name="password" id="password">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+  <div class="auth-page">
+
+    <!-- Left panel -->
+    <div class="auth-panel">
+      <div class="panel-deco">"</div>
+      <blockquote class="panel-quote">
+        A writer only begins a book. <em>A reader finishes it.</em>
+      </blockquote>
+      <p class="panel-attr">— Samuel Johnson</p>
     </div>
 
-    <%- include("./partials/scripts") %>
+    <!-- Right form -->
+    <div class="auth-form-wrap">
+      <div class="auth-form-inner page-enter">
+        <div class="auth-logo">Ink<span>.</span></div>
+        <p class="auth-greeting">Welcome back — sign in to continue.</p>
+
+        <form action="/user/signin" method="post" class="auth-form">
+          <div class="form-group" style="margin:0">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <div class="form-group" style="margin:0">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password" placeholder="••••••••" required autocomplete="current-password">
+          </div>
+
+          <button type="submit" class="btn btn-primary auth-submit">Sign in →</button>
+        </form>
+
+        <p class="auth-footer">
+          New here? <a href="/user/signup">Create an account</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <%- include("./partials/scripts") %>
 </body>
 </html>

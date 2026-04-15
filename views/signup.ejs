@@ -1,31 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include("./partials/head") %>
-    <title>Signup</title>
+  <%- include("./partials/head") %>
+  <title>Create account — BlogIt</title>
+  <style>
+    .auth-page {
+      min-height: calc(100vh - 64px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 700px) {
+      .auth-page { grid-template-columns: 1fr; }
+      .auth-panel { display: none; }
+    }
+
+    .auth-panel {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(2rem, 5vw, 4rem);
+      position: relative; overflow: hidden;
+    }
+    .auth-panel::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 70%, rgba(232,201,126,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 70% 20%, rgba(80,140,200,0.04) 0%, transparent 60%);
+    }
+    .panel-steps {
+      position: relative; z-index: 1;
+      display: flex; flex-direction: column; gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .step {
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .step-num {
+      width: 28px; height: 28px; flex-shrink: 0;
+      border-radius: 50%;
+      border: 1px solid var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 0.7rem; color: var(--accent);
+    }
+    .step-title { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.15rem; }
+    .step-desc { font-size: 0.82rem; color: var(--muted); }
+    .panel-tagline {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 900; letter-spacing: -0.025em;
+      line-height: 1.2;
+      position: relative; z-index: 1;
+    }
+    .panel-tagline em { font-style: italic; color: var(--accent); }
+    .panel-deco {
+      position: absolute; top: 1.5rem; left: 2rem;
+      font-family: var(--serif); font-size: 8rem;
+      font-weight: 900; color: rgba(232,201,126,0.04);
+      pointer-events: none; user-select: none; line-height: 1;
+    }
+
+    /* Form side */
+    .auth-form-wrap {
+      display: flex; align-items: center; justify-content: center;
+      padding: clamp(2rem, 5vw, 4rem);
+    }
+    .auth-form-inner { width: 100%; max-width: 380px; }
+
+    .auth-logo {
+      font-family: var(--serif); font-size: 1.7rem; font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+    .auth-logo span { color: var(--accent); }
+    .auth-greeting { font-size: 0.9rem; color: var(--muted); margin-bottom: 2.5rem; }
+
+    .auth-form { display: flex; flex-direction: column; gap: 1.1rem; }
+
+    .auth-submit {
+      width: 100%; padding: 0.8rem;
+      font-size: 0.92rem; font-weight: 600;
+      justify-content: center;
+      margin-top: 0.25rem;
+    }
+    .auth-footer {
+      text-align: center; margin-top: 1.75rem;
+      font-size: 0.85rem; color: var(--muted);
+    }
+    .auth-footer a { color: var(--accent); }
+    .auth-footer a:hover { text-decoration: underline; }
+
+    /* Password strength indicator */
+    .pw-strength { display: flex; gap: 4px; margin-top: 6px; }
+    .pw-bar {
+      height: 3px; flex: 1; border-radius: 2px;
+      background: var(--border); transition: var(--trans);
+    }
+    .pw-bar.active-1 { background: var(--danger); }
+    .pw-bar.active-2 { background: #e0a85c; }
+    .pw-bar.active-3 { background: #7ec87e; }
+    .pw-bar.active-4 { background: #4caf7d; }
+  </style>
 </head>
 <body>
-    <%- include("./partials/nav") %>
+  <%- include("./partials/nav") %>
 
-    <div class="container">
-        <form action="/user/signup" method="post">
-            <div class="mb-3 mt-4">
-                <label for="fullName" class="form-label">Full Name</label>
-                <input type="text" class="form-control" name="fullName" id="fullName" aria-describedby="fullName">
-            </div>
-            <div class="mb-3 mt-4">
-                <label for="email" class="form-label" name="email">Email address</label>
-                <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label" name="password">Password</label>
-                <input type="password" class="form-control" name="password" id="password">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+  <div class="auth-page">
+
+    <!-- Left panel -->
+    <div class="auth-panel">
+      <div class="panel-deco">✦</div>
+      <div class="panel-steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <p class="step-title">Create your account</p>
+            <p class="step-desc">Free, fast, no credit card needed.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <p class="step-title">Write your first post</p>
+            <p class="step-desc">Share ideas, stories, or anything worth saying.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <p class="step-title">Join the conversation</p>
+            <p class="step-desc">Comment, connect, and grow your audience.</p>
+          </div>
+        </div>
+      </div>
+      <h2 class="panel-tagline">Your voice.<br><em>Amplified.</em></h2>
     </div>
 
-    <%- include("./partials/scripts") %>
+    <!-- Right form -->
+    <div class="auth-form-wrap">
+      <div class="auth-form-inner page-enter">
+        <div class="auth-logo">Ink<span>.</span></div>
+        <p class="auth-greeting">Create your free account in seconds.</p>
+
+        <form action="/user/signup" method="post" class="auth-form">
+          <div class="form-group" style="margin:0">
+            <label class="form-label" for="fullName">Full Name</label>
+            <input type="text" class="form-control" name="fullName" id="fullName" placeholder="Jane Doe" required autocomplete="name">
+          </div>
+          <div class="form-group" style="margin:0">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com" required autocomplete="email">
+          </div>
+          <div class="form-group" style="margin:0">
+            <label class="form-label" for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="passwordInput" placeholder="Min. 8 characters" required autocomplete="new-password">
+            <div class="pw-strength">
+              <div class="pw-bar" id="b1"></div>
+              <div class="pw-bar" id="b2"></div>
+              <div class="pw-bar" id="b3"></div>
+              <div class="pw-bar" id="b4"></div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary auth-submit">Create account →</button>
+        </form>
+
+        <p class="auth-footer">
+          Already have an account? <a href="/user/signin">Sign in</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <%- include("./partials/scripts") %>
+  <script>
+    const pw = document.getElementById('passwordInput');
+    const bars = [document.getElementById('b1'), document.getElementById('b2'), document.getElementById('b3'), document.getElementById('b4')];
+
+    pw?.addEventListener('input', () => {
+      const v = pw.value;
+      let score = 0;
+      if (v.length >= 6) score++;
+      if (v.length >= 10) score++;
+      if (/[A-Z]/.test(v) && /[0-9]/.test(v)) score++;
+      if (/[^A-Za-z0-9]/.test(v)) score++;
+
+      bars.forEach((b, i) => {
+        b.className = 'pw-bar' + (i < score ? ` active-${score}` : '');
+      });
+    });
+  </script>
 </body>
 </html>

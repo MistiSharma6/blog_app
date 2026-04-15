@@ -1,29 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include("./partials/head") %>
-    <title>Homepage</title>
+  <%- include("./partials/head") %>
+  <title>BlogIt — Stories worth reading</title>
+  <style>
+    /* Hero */
+    .hero {
+      padding: clamp(3rem, 8vw, 6rem) 0 clamp(2rem, 5vw, 4rem);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 2rem; flex-wrap: wrap;
+    }
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      max-width: 14ch;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      max-width: 280px;
+      line-height: 1.7;
+    }
+
+    /* Ticker / date bar */
+    .meta-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-family: var(--mono);
+    }
+    .meta-bar-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+      margin-right: 0.5rem;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Grid */
+    .blogs-section { padding: clamp(2rem, 5vw, 4rem) 0; }
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-family: var(--mono);
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .blogs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* Featured first card */
+    .blogs-grid .card:first-child {
+      grid-column: span 2;
+    }
+    @media (max-width: 720px) {
+      .blogs-grid .card:first-child { grid-column: span 1; }
+    }
+
+    .card-img-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      background: var(--surface2);
+    }
+    .card-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s cubic-bezier(.4,0,.2,1);
+    }
+    .card:hover .card-img-wrap img { transform: scale(1.04); }
+
+    .card-img-wrap .card-num {
+      position: absolute; top: 1rem; left: 1rem;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      background: rgba(12,12,14,0.7);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      letter-spacing: 0.08em;
+    }
+
+    .card-body {
+      padding: 1.25rem 1.4rem 1.4rem;
+      display: flex; flex-direction: column; gap: 0.75rem;
+    }
+    .card-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .blogs-grid .card:first-child .card-title {
+      font-size: 1.65rem;
+    }
+    .card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: auto;
+    }
+    .read-link {
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--accent);
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      transition: var(--trans);
+    }
+    .read-link:hover { gap: 0.6rem; }
+    .read-link::after { content: '→'; }
+
+    /* Empty state */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .empty-state h3 {
+      font-family: var(--serif);
+      font-size: 2rem; font-weight: 700;
+      color: var(--text); margin-bottom: 0.75rem;
+    }
+    .empty-state p { color: var(--muted); margin-bottom: 1.5rem; }
+  </style>
 </head>
 <body>
-    <%- include("./partials/nav") %>
-    
-    <div class="container mt-3">
-        <div class="row row-cols-4">
-            <% blogs.forEach(blog => { %>
-            <div class="col">
-                <div class="card col" style="width: 18rem;">
-                    <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= blog.title %></h5>
-                        <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
-                    </div>
-                </div>
-            </div>
-            <% }) %>
-        </div>
+  <%- include("./partials/nav") %>
+
+  <main class="container page-enter">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-inner">
+        <h1 class="hero-title">Ideas that <em>matter</em>, stories that stay.</h1>
+        <p class="hero-sub">A curated space for thoughtful writing. Explore perspectives, discover voices, and add your own.</p>
+      </div>
+    </section>
+
+    <!-- Meta bar -->
+    <div class="meta-bar">
+      <span><span class="meta-bar-dot"></span>Latest posts</span>
+      <span id="live-date"></span>
     </div>
 
+    <!-- Blog grid -->
+    <section class="blogs-section">
+      <p class="section-label"><%= blogs.length %> article<%= blogs.length !== 1 ? 's' : '' %> published</p>
 
-    <%- include("./partials/scripts") %>
+      <div class="blogs-grid">
+        <% if (blogs.length === 0) { %>
+          <div class="empty-state">
+            <h3>Nothing here yet.</h3>
+            <p>Be the first to write something worth reading.</p>
+            <% if (locals.user) { %>
+              <a href="/blog/add-new" class="btn btn-primary">Start writing</a>
+            <% } else { %>
+              <a href="/user/signup" class="btn btn-primary">Join & write</a>
+            <% } %>
+          </div>
+        <% } %>
+
+        <% blogs.forEach((blog, i) => { %>
+          <div class="card">
+            <div class="card-img-wrap">
+              <img src="<%= blog.coverImageURL %>" alt="<%= blog.title %>" loading="lazy">
+              <span class="card-num">0<%= i + 1 %></span>
+            </div>
+            <div class="card-body">
+              <h2 class="card-title"><%= blog.title %></h2>
+              <div class="card-footer">
+                <a href="/blog/<%= blog._id %>" class="read-link">Read article</a>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+
+  </main>
+
+  <%- include("./partials/scripts") %>
+  <script>
+    const d = new Date();
+    document.getElementById('live-date').textContent =
+      d.toLocaleDateString('en-US', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+  </script>
 </body>
 </html>
